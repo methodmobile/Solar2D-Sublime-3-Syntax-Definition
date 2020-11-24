@@ -1,0 +1,249 @@
+%YAML 1.2
+---
+name: Solar2D LUA
+file_extensions:
+  - lua
+scope: source.lua.corona
+variables:
+  reserved_word: \b(and|do|elseif|else|end|false|for|function|goto|if|in|local|nil|not|or|repeat|return|then|true|until|while|then)\b
+  lua_globalFunc: \b(assert|collectgarbage|error|getfenv|getmetatable|ipairs|next|pairs|pcall|print|rawequal|rawget|rawset|select|setfenv|setmetatable|load|loadfile|rawlen|tonumber|tostring|type|xpcall|require|module|unpack)\b
+  ##=======================================================================================================================================================================================
+  lua_constants: \b(io|math|os|coroutine|package|string|utf8|table|debug|bit32)\b
+
+  lua_coroutine: \b(create|isyieldable|resume|running|status|wrap|yield)\b
+  lua_packageFunc: \b(config|cpath|loaded|path|preload|searchers|loaders)\b
+  lua_stringFunc: \b(byte|char|dump|find|format|gmatch|gsub|len|lower|match|pack|packsize|rep|reverse|sub|unpack|upper)\b
+  lua_utf8Func: \b(charpattern|char|codes|codepoint|len|offset)\b
+  lua_tableFunc: \b(concat|insert|remove|sort|unpack|maxn|indexOf)\b
+  lua_mathFunc:  \b(abs|acos|asin|atan||atan2|ceil|cos|cosh|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|round|sin|sinh|sqrt|tan|tanh)\b
+  lua_ioFunc: \b(close|flush|input|lines|open|output|read|stderr|tmpfile|type|write)\b
+  lua_osFunc: \b(clock|date|difftime|execute|exit|getenv|remove|rename|setlocale|time|tmpname)\b
+  lua_debugFunc: \b(debug|gethook|getinfo|getlocal|getmetatable|getregistry|getupvalue|getuservalue|sethook|setlocal|setmetatable|setupvalue|setuservalue|traceback|upvalueid|upvaluejoin|getfenv|setfenv)
+  lua_bit32Func: \b(arshift|band|bnot|bor|btest|bxor|extract|lrotate|lshift|replace|rrotate|rshift)\b
+  ##=======================================================================================================================================================================================
+  solar_modules: \b(lfs|json|composer|widget|crypto|physics|licensing|socket|widget)\b
+
+  module_lfsFunc: \b(dir|mkdir)\b
+  module_cryptoFunc: \b(digest|hmac)\b
+  module_jsonFunc: \b(decode|encode|decodeFile|prettify)\b
+  module_composerFunc: \b(getScene|setSceneName|getSceneName|getVariable|gotoScene|hideOverlay|loadScene|newScene|removeScene|setVariable|showOverlay)\b
+  module_widgetFunc: \b(newButton|newPickerWheel|newProgressView|newScrollView|newSegmentedControl|newSlider|newSpinner|newStepper|newSwitch|newTabBar|newTableView|setTheme)\b
+  module_licensingFunc: \b(init|verify)\b
+  module_storeFunc: \b(finishTransaction|init|loadProducts|purchase|restore)\b
+
+  module_composerVars: \b(stage)\b
+  module_cryptoVars: \b(md4|md5|sha1|sha224|sha256|sha384|sha512)\b
+  module_storeVars: \b(canLoadProducts|canMakePurchases|target|isActive)\b
+  ##=======================================================================================================================================================================================
+  solar_constants: \b(display|graphics|system|native|physics|system|native|media|audio|network|transition|timer)\b
+
+  solar_physicsFunc: \b(physicstoMKS|stopk|start|setVelocityIterations|setTimeStep|setTimeScale|setScale|setReportCollisionsInContentCoordinates|setPositionIterations|setMKS|setGravity|setDrawMode|setDebugErrorsEnabled|setContinuous|setAverageCollisionPositions|removeBody|reflectRay|rayCast|queryRegion|pause|newParticleSystem|newJoint|getTimeScale|getReportCollisionsInContentCoordinates|getMKS|getGravity|getDebugErrorsEnabled|getAverageCollisionPositions|fromMKS|addBody)\b
+  solar_graphicsFunc: \b(releaseTextures|newTexture|newOutline|newMask|newImageSheet|getFontMetrics|defineEffect)\b
+  solar_displayFunc: \b(newText|newImage|newShape|newCircle|newGroup|newPolygon|capture|getCurrentStage|captureBounds|captureScreen|colorSample|getDefault|getSafeAreaInsets|loadRemoteImagenewContainer|newEmbossedText|newEmitter|newImageRect|newLine|newMesh|newRect|newRoundedRect|newSnapshot|newSprite|remove|save|setDefault|setDrawMode|setStatusBar)\b
+  solar_systemFunc: \b(activate|canOpenURL|cancelNotification|deactivate|deletePrefences|getIdleTimer|getInfo|getInputDevices|getPrefrences|getTimer|getInputDevices|hasEventSource|newEventDispatcher|openURL|pathForFile|scheduleNotification|setAccelerometerInterval|scheduleNotification|setAccelerometerInterval|setGyroscopeInterval|setIdleTimer|setLocationAccuracy|setLocationThreshold|setPreferences|setTapDelay|vibrate)\b
+  solar_nativeFunc: \b(canShowPopup|cancelAlert|cancelWebPopup|getFontNames|getProperty|getSync|newFont|newMapView|newTextBox|newTextField|newVideo|newWebView|requestExit|setActivityIndicator|setKeyboardFocus|setProperty|setSync|showAlert|showPopup|showWebPopup)\b
+  solar_mediaFunc: \b(stopSound|show|setSoundVolume|selectVideo|selecPhoto|save|playVide|playSound|playEventSound|pauseSound|newRecordings|newEventSound|hasSource|getSoundVolume|captureVideo|capturPhoto)\b
+  solar_networkFunc: \b(upload|setStatusListener|request|download|cancel)\b
+  solar_transitionFunc: \b(cancel|dissolve|fadeIn|fadeOut|from|moveBy|moveTo|pause|resume|scaleBy|scaleTo|to)\b
+  solar_timerFunc: \b(cancel|pause|performWithDelay|resume)\b
+  solar_audioFunc: \b(stopWithDelay|stop|setVolume|setMinVolume|setMaxVolume|seek|rewind|resume|reserveChannels|play|pause|loadStream|loadSound|isChannelPlaying|isChannelPaused|isChannelActive|getVolume|getMinVolume|getMaxVolume|getDuration|findFreeChannel|fadeOut|fade|dispose)\b
+  solar_typesFunc: \b(addEventListener|applyAngularImpulse|applyForce|applyLinearImpulse|applyTorque|getLinearVelocity|getMassLocalCenter|getMassWorldCenter|resetMassData|setLinearVelocity|getLabel|setEnabled|setLabel|getCurrentProvider|setCurrentProvider|initialize|instanceOf|isClass|isRoot|new|newClass|setExtension|contentToLocal|localToContent|removeSelf|rotate|scale|setMask|toBack|toFront|translate|pausek|start|stopk|dispatchEvent|removeEventListener|close|flush|lines|read|seek|setvbuf|write|insert|remove|vibrate|getAxes|getAnchorA|getAnchorB|getGroundAnchorA|getGroundAnchorB|getLimits|getLocalAnchorA|getLocalAnchorB|getLocalAxisA|getReactionForce|getRotationLimits|getTarget|setLimits|setRotationLimits|append|addMarker|getAddressLocation|getUserLocation|nearestAddress|removeAllMarkers|removeMarker|requestLocation|setCenter|setRegion|getNativeProperty|setNativeProperty|createGroup|createParticle|destroyParticles|queryRegion|rayCast|getValues|selectValue|getProgress|resizeView|setProgress|getSampleRate|isRecording|setSampleRate|startRecording|stopRecording|hasEventSource|hideErrorAlerts|getContentPosition|getView|scrollTo|scrollToPosition|setIsLocked|setScrollHeight|setScrollWidth|takeFocus|setActiveSegment|setFillColor|setStrokeColor|setValue|invalidate|play|setFrame|setSequence|setFocus|getValue|setValue|setState|setSelected|deleteAllRows|deleteRow|deleteRows|getContentPosition|getNumRows|getRowAtIndex|insertRow|reloadData|scrollToIndex|scrollToY|setIsLocked|setReturnKey|setSelection|setTextColor|setEmbossColor|releaseSelf|reload|draw|invalidate|setBackground|load|seek|back|deleteCookies|forward|request)\b
+
+  solar_mathVars: \b(pi|inf)\b
+  solar_mediaVars: \b(RemoteSource)\b
+  solar_nativeVars: \b(systemFont|systemFontBold)\b
+  solar_packageVars: \b(loaded|loaders)\b
+  solar_physicsVars: \b(engineVersion)\b
+
+  solar_systemVars: \b(ApplicationSupportDirectory|CachesDirectory|ResourceDirectory|TemporaryDirectory|pathForFile)\b
+  solar_timerVars: \b(allowInterationsWithinFrame)\b
+  solar_networkVars: \b(canDetectNetworkStatusChanges)\b
+  solar_displayVars: \b(actualContentHeight|actualContentWidth|contentCenterX|contentCenterY|contentHeight|contentScaleX|contentScaleY|contentWidth|currentStage|fps|imageSuffix|safeActualContentHeight|safeActualContentWidth|safeScreenOriginX|screenOriginX|statusBarHeight|topStatusBarContentHeight|viewableContentHeight|viewableContentWidth)\b
+  solar_eventVar: (?<=event\.)\b(phase|target|time|device|isShake|name|xGravity|xInstant|xRaw|yGravity|yInstant|yRaw|zGravity|zInstant|zRaw|channel|completed|handle|phase|axis|device|normalizedValue|raw|value|contact|element1|element2|object2|other|otherElement|selfElement|x|y|a|b|g|r|action|completed|duration|fileSize|url|time|data|errorCode|localPlayerScore|provider|type|deltaTime|xRotation|yRotation|zRotation|magnetic|connectionStateChanged|device|reconfigured|descriptor|device|isAltDown|isCommandDown|isCtrlDown|isShiftDown|keyName|nativeKeyCode|errorType|expiration|isError|isVerified|provider|response|accuracy|altitude|direction|stackTrace|latitude|longitude|speed|city|cityDetail|country|countryCode|errorMessage|isError|postalCode|region|regionDetail|streer|streetDetail|request|isCommandDown|isCtrlDown|isMiddleButtonDown|isPrimaryButtonDown|isSecondaryButtonDown|scrollX|scrollY|bytesEstimated|bytesTransferred|requestId|response|responseHeaders|responseType|status|address|isConnectionOnDemand|isConnectionRequired|isInteractionRequired|isReachable|isReachableViaCellular|isReachableViaWiFi|alert|applicationState|badge|custom|sound|delta|element|normalX|normalY|object|particleSystem|force|friction|object1|object2|other|otherElement|selfElement|tapCount|params|parent|sprite|commandLineArgs|commandLineDir|numTaps|count|source|pressure|xStart|yStart|newCharacters|numDeleted|oldText|startPosition|text|productList|products|storeTransaction|invalidProducts|transaction)\b
+  solar_typeVars: (?!:)\b(angularVelocity|angularDamping|bodyType|gravityScale|isAwake|isBodyActive|isBullet|isFixedRotation|isSensor|isSleepingAllowed|isSleepingAllowed|linearDamping|mass|name|publisherId|revision|version|alpha|anchorX|anchorY|blendMode|contentBounds|contentHeight|contentWidth|_defined|height|isHitTestMasked|isHitTestable|isVisible|_lastChange|maskRotation|maskScaleX|maskScaleY|maskX|maskY|parent|parent_properties|_properties|rotation|width|x|xScale|y|yScale|anchorChildren|accuracy|descriptor|maxValue|minValue|number|type|MFiProfile|allowsRotation|androidDeviceId|canVibrate|connectionState|descriptor|displayName|driver|isConnected|permanentId|playerNumber|productName|reportsAbsoluteDpadValues|dampingRatio|frequency|isActive|isCollideConnected|isLimitEnabled|isMotorEnabled|jointAngle|jointSpeed|length|length1|length2|limitState|maxForce|maxLength|maxMotorForce|maxMotorTorque|maxTorque|motorForce|motorSpeed|motorTorque|ratio|reactionTorque|referenceAngle|springDampingRatio|springFrequency|isLocationVisible|isScrollEnabled|isZoomEnabled|mapType|imageRadius|particleCount|particleDamping|particleDensity|particleDestructionByAge|particleGravityScale|particleMass|particleMaxCount|particlePaused|particleRadius|particleStrictContactCheck|anchorSegments|segmentLabel|segmentNumber|fill|path|stroke|strokeWidth|canvas|canvasMode|clearColor|group|textureFilter|textureWrapX|textureWrapY|frame|isPlaying|numFrames|sequence|timeScale|maximumValue|minimumValue|value|isOn|align|font|hasBackground|isEditable|isFontSizeScaled|placeholder|size|text|autocorrectionType|font|inputType|isFontSizeScaled|isSecure|placeholder|spellCheckingType|baselineOffset|baseDir|filename|wrapX|wrapY|anchorX|anchorY|cache|pixelHeightpixelWidth|currentTime|isMuted|totalTime|canGoBack|canGoForward|hasBackground)\b
+
+  solar_classFuncs: ({{solar_displayFunc}}|{{solar_graphicsFunc}}|{{solar_physicsFunc}}|{{solar_typesFunc}}|{{solar_systemFunc}}|{{solar_mediaFunc}}|{{solar_audioFunc}}|{{solar_networkFunc}}|{{solar_transitionFunc}}|{{solar_timerFunc}})
+  lua_classFuncs: ({{lua_coroutine}}|{{lua_packageFunc}}|{{lua_stringFunc}}|{{lua_utf8Func}}|{{lua_tableFunc}}|{{lua_mathFunc}}|{{lua_ioFunc}}|{{lua_osFunc}}|{{lua_debugFunc}})
+
+  solar_classVars: ({{solar_mathVars}}|{{solar_mediaVars}}|{{solar_nativeVars}}|{{solar_packageVars}}|{{solar_systemVars}}|{{solar_timerVars}}|{{solar_networkVars}}|{{solar_displayVars}})
+  solar_modlFuncs: ({{module_lfsFunc}}|{{module_cryptoFunc}}|{{module_jsonFunc}}|{{module_composerFunc}}|{{module_widgetFunc}}|{{module_licensingFunc}}|{{module_storeFunc}})
+
+  variables_reserved: ({{solar_classVars}}|{{reserved_word}}|{{solar_modules}})
+  constant_reserved: ({{lua_globalFunc}}|{{solar_constants}}|{{lua_constants}})
+  functions_reseved: ({{solar_classFuncs}}|{{lua_classFuncs}}|{{lua_globalFunc}})
+
+  varWord: (?:\b[A-Za-z_][A-Za-z0-9_]*\b)
+  funcParams: (?=\(.*\))
+  var_funcs: '{{varWord}}(?=\s*=\s*function\b\s*)|(?!function\b\s*){{varWord}}\s*{{funcParams}}'
+
+  variable_func: '{{var_funcs}}'
+  variable_othr: (?<=\.){{varWord}}(?!\s*=\s*function\(|\s*\()
+  variable_name: (?!{{variables_reserved}}|{{constant_reserved}}|{{variable_func}}){{varWord}}
+
+contexts:
+
+  #Pop after first non white space charachter.
+  else-pop:
+    - match: (?=\S)
+      pop: true
+
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+
+    - include: keywords
+    - include: numbers
+    - include: strings
+    - include: string_content
+    - include: storage
+    - include: entity
+    - include: statements
+    - include: builtin
+    - include: support
+    - include: variable
+    - include: function_param
+    - include: slr_mdl
+
+  prototype:
+    - match: --\[(=*)\[
+      scope: punctuation.definition.comment.begin.lua
+      push:
+        - meta_include_prototype: false
+        - meta_scope: comment.block.lua
+        - match: \]\1\]
+          scope: punctuation.definition.comment.end.lua
+          pop: true
+    - match: (--).*
+      scope: comment.line.lua
+      captures:
+        1: punctuation.definition.comment.lua
+
+  function_param:
+    - match: \(
+      scope: punctuation.section.group.begin.lua
+      set:
+        - meta_include_prototype: false
+        - meta_scope: meta.function-call
+        - match: (?=\))
+          scope: punctuation.section.group.end.lua
+          pop: true
+
+        - include: strings
+        - include: support
+        - include: numbers
+
+        - match: ({{varWord}})
+          scope: variable.parameter.function.lua
+  slr_mdl:
+    - match: (\b{{varWord}}\b)(?:(?=\s*=\s*require\s*\(\s*"\s*{{solar_modules}}\s*"\)))
+      scope: support.class.lua
+      captures:
+        2: support.class.lua
+
+  variable:
+    - match: '{{variable_func}}'
+      scope: entity.name.function.lua
+
+    - match: '{{variable_othr}}'
+      scope: variable.other.lua
+
+    - match: '{{variable_name}}'
+      scope: variable.lua
+
+  storage:
+    - match: (\blocal\b|_G\.)
+      scope: storage.modifier.lua
+
+    - match: (?!=\s*)\bfunction\b{{funcParams}}|(?!local\s*)\bfunction\b
+      scope: storage.type.function.lua keyword.declaration.function
+
+  numbers:
+    - match: '(?<!\w)[0-9]+\b'
+      scope:  constant.numeric.lua
+
+    - match: \d+\.\d*
+      scope: constant.numeric.decimal.lua
+
+  keywords:
+    - match: (?:[-+*/%^])
+      scope: keyword.operator.arithmetic.lua
+    - match: (?:[=<>~]=|=)
+      scope: keyword.operator.relational.lua
+    - match: \b(?:and|or|not)\b
+      scope: keyword.operator.word.lua
+    - match: '\b(?:for|while|do|if|then|end|else|elseif|return|break)\b'
+      scope: keyword.control
+    - match: '#'
+      scope: keyword.operator.other
+
+  builtin:
+    - match: \b(true|false|nil|\.\.\.)\b
+      scope: constant.language..lua
+
+    - match: \b{{lua_globalFunc}}\b
+      scope: constant.language.function.lua constant.function.lua support.constant.lua
+
+    - match: (?<!\D)\b{{lua_constants}}(?=\.{{lua_classFuncs}}{{funcParams}})
+      scope: support.class.lua
+
+      set: builtin_check
+  builtin_check:
+    - meta_scope: meta.function.check.lua
+    - match: (?!\b{{lua_constants}})(?<=\.){{lua_classFuncs}}{{funcParams}}
+      scope: support.function.lua
+
+    - match: (?=\()
+      scope: meta.function.break.lua
+      pop: true
+
+  statements:
+    # statements begin with a '--' and finish at the end of the line.
+    - match: (--|\[(=*)\[|\')
+      scope: punctuation.definition.lua
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: punctuation.definition.string.end.lua
+        - match: ($\n?|\[\]\1\]\])
+          pop: true
+
+    - match: '[.:]'
+      scope: punctuation.accessor.lua
+
+  strings:
+    - match: (\"|\')
+      scope: punctuation.definition.string.begin
+      push: inside_string
+
+  inside_string:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double.lua
+
+    - match: (\"|\')
+      scope: punctuation.definition.string.end.lua
+      pop: true
+
+    - match: \\[abfnrtv\\'"\[\]\n]
+      scope: constant.character.escape.lua
+
+  support:
+    - match: '{{varWord}}\b(?=\.{{solar_modlFuncs}})'
+      scope: support.class.lua
+      pop: true
+
+    - match: (?={{varWord}})(?!\.){{solar_modlFuncs}}
+      scope: support.function.lua
+
+    - match: (?<=:)\b{{solar_typesFunc}}\b{{funcParams}}
+      scope: support.function.lua
+
+    - match:  \b{{solar_constants}}\b(?=\.{{solar_classFuncs}})
+      scope: support.class.lua
+
+      set: support_check
+  support_check:
+    - meta_include_prototype: false
+    - meta_scope: meta.function.check.lua
+    - match: (?!\b{{solar_constants}})(?<=\.){{solar_classFuncs}}
+      scope: support.function.lua
+      pop: true
+
