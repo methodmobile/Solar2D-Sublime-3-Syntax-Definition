@@ -1,6 +1,6 @@
 %YAML 1.2
 ---
-name: Solar2D LUA
+name: LUA (Solar2D)
 file_extensions:
   - lua
 scope: source.lua.corona
@@ -167,11 +167,11 @@ contexts:
   keywords:
     - match: (?:[-+*/%^])
       scope: keyword.operator.arithmetic.lua
-    - match: (?:[=<>~]=|=)
+    - match: (?:[~=<>])
       scope: keyword.operator.relational.lua
     - match: \b(?:and|or|not)\b
       scope: keyword.operator.word.lua
-    - match: '\b(?:for|while|do|if|then|end|else|elseif|return|break)\b'
+    - match: '\b(?:for|while|do|if|then|end|else|elseif|return|break|not)\b'
       scope: keyword.control
     - match: '#'
       scope: keyword.operator.other
